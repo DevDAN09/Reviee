@@ -34,11 +34,5 @@ export const StyledButton = styled.button<StyledButtonProps>`
   &:disabled {
     cursor: not-allowed;
     color: ${colors.white};
-    background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.18) 77.63%,
-        rgba(255, 255, 255, 0.6) 100%
-      ),
-      linear-gradient(0deg, rgba(252, 214, 44, 0.5) 0%, rgba(255, 146, 68, 0.5) 100%);
   }
 `;
