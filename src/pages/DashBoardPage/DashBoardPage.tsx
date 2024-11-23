@@ -208,6 +208,13 @@ const DashBoardPage = () => {
     const handleRequest = () => {
         showToast('Reviee가 내용을 정리중...');
         gptRequestMutation.mutate();
+        //setIsGptRequestSent(true);
+    }
+
+    const handleVelogPost = () => {
+        showToast('Velog 글 작성중...');
+        velogPostMutation.mutate();
+        
     }
 
     const handleBack = () => {
@@ -216,11 +223,7 @@ const DashBoardPage = () => {
         if(currentStep === 1) navigate('/');
     }
 
-    const handleVelogPost = () => {
-        showToast('Velog 글 작성중...');
-        velogPostMutation.mutate();
-        
-    }
+
 
     const showToast = (message: string) => {
         toast.showToast({theme: "positive", content: message});

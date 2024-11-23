@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { getFontStyle } from "@/styles/typo";
 import colors from "@/styles/color";
 
-
-
 export const VelogPageStyle = styled.div`
     width: inherit;
+    height: 100%;
 `
 
 export const HeaderContainer = styled.div`
@@ -13,7 +12,8 @@ export const HeaderContainer = styled.div`
 `
 
 export const ContentContainer = styled.div`
-    width: inherit;
+    position: relative;
+    width: 100%;
     margin-left: 2rem;
 
     @media screen and (max-width: 768px) {
@@ -72,6 +72,9 @@ export const Description = styled.div`
     white-space: nowrap;
     overflow: hidden;
 
+    @media screen and (max-width: 425px) {
+        font-size: 0.8rem;
+    }
 
     animation: typing 2s steps(50);
     
@@ -113,8 +116,21 @@ export const StepIndicatorContainer = styled.div`
 
 export const BackButton = styled.img`
     margin-top: 2rem;
+    margin-left: 2rem;
     width: 1rem;
     height: 1rem;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0rem;
+    }
+`
+
+export const MDEditorWrapper = styled.div`
+    width: inherit;
+
+    @media screen and (max-width: 425px) {
+        max-width: 300px;
+    }
 `
 
 export const MarkdownWrapper = styled.div<{ isEditing: boolean }>`
@@ -127,7 +143,14 @@ export const MarkdownWrapper = styled.div<{ isEditing: boolean }>`
   max-height: ${props => props.isEditing ? '250px' : '500px'};
   overflow-y: auto;
   overflow-x: hidden;
-  
+
+  @media screen and (max-width: 425px) {
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 375px) {
+    max-width: 250px;
+  }
 
   & > * {
     margin-bottom: 16px;
@@ -187,13 +210,21 @@ export const EditorContainer = styled.div`
     max-width: 80%;
     max-height: 250px;
     animation: slideDown 0.3s ease-in-out;
+
+    @media screen and (max-width: 425px) {
+        max-width: 300px;
+    }
+    
+    @media screen and (max-width: 375px) {
+        max-width: 250px;
+    }
 `;
 
 export const FloatingToggleButton = styled.button<{ isActive: boolean }>`
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
     padding: 12px 24px;
+    right: 2rem;
+    bottom: 2rem;
     border-radius: 25px;
     background-color: ${props => props.isActive ? colors.primary : '#000000'};
     color: #FFFFFF;
@@ -203,7 +234,7 @@ export const FloatingToggleButton = styled.button<{ isActive: boolean }>`
     font-size: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.2s ease;
-    z-index: 1000;
+    z-index: 100;
     animation: shake 0.4s ease-in-out 3;
 
     &:focus {
