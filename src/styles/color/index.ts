@@ -11,7 +11,8 @@ export type ColorKeys =
   | 'profile_background'
   | 'profile_text_background'
   | 'profile_text'
-  | 'button_background';
+  | 'button_background'
+  | 'error';
 
 export type Colors = Record<ColorKeys, string>;
 
@@ -29,6 +30,7 @@ const colors: Colors = {
   profile_text: '#877C5C',
   primary: '#12B886',
   button_background: '#000000',
+  error: '#FF6868',
 };
 
 export default colors;

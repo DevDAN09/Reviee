@@ -6,14 +6,18 @@ import {
   StyledTextFieldLabel,
   StyledTextFieldLabelContainer,
   StyledTextFieldStarLabel,
+  StyledTextFieldTextArea,
 } from './TextField.style';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  title: string;
+  title?: string;
   description: string;
   isError?: boolean;
   errorMessage?: string;
   value: string;
+  width?: string;
+  height?: string;
+  multiline?: boolean;
 }
 
 const TextField = ({
@@ -23,10 +27,13 @@ const TextField = ({
   errorMessage,
   value,
   onChange,
+  width = '80%',
+  height = 'auto',
   ...props
 }: InputProps) => {
+  
   return (
-    <StyledTextFieldContainer>
+    <StyledTextFieldContainer $width={width}>
       <StyledTextFieldLabelContainer>
         <StyledTextFieldLabel htmlFor={title}>
           {props.required ? (
@@ -46,6 +53,7 @@ const TextField = ({
         id={title}
         placeholder={description}
         $isError={isError}
+        $height={height}
         value={value}
         onChange={onChange}
         {...props}

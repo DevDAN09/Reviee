@@ -45,8 +45,8 @@ const LoginPage = () =>{
             <ContentContainer>
                 <Title>로그인</Title>
                 <TextFieldContainer>
-                    <TextField title="이메일" description="이메일을 입력해주세요." value={userId} onChange={(e) => setUserId(e.target.value)}/>
-                    <TextField title="비밀번호" description="비밀번호를 입력해주세요." value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <TextField width="300px" description="이메일을 입력해주세요." value={userId} onChange={(e) => setUserId(e.target.value)}/>
+                    <TextField width="300px" description="비밀번호를 입력해주세요." type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </TextFieldContainer>
                 <ButtonContainer>
                     <Button 

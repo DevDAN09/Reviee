@@ -4,7 +4,9 @@ import { Suspense } from 'react';
 import { 
   HomePage, 
   LoginPage,
-  ErrorPage 
+  ErrorPage,
+  VelogPage,
+  DashBoardPage
 } from '@/pages';
 import Frame from '@/components/Frame';
 
@@ -30,6 +32,14 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/velog',
+        element: <VelogPage />,
+      },
+      {
+        path: '/dashboard',
+        element: <DashBoardPage />,
       },
     ],
   },

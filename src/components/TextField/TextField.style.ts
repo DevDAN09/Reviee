@@ -4,13 +4,13 @@ import { getFontStyle } from '@/styles/typo';
 
 interface isTextFieldProps {
   $isError?: boolean;
-  $isCertificate?: boolean;
 }
 
-export const StyledTextFieldContainer = styled.div`
+export const StyledTextFieldContainer = styled.div<{ $width: string }>`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  width: ${props => props.$width};
 `;
 
 export const StyledTextFieldLabelContainer = styled.div`
@@ -36,35 +36,39 @@ export const StyledTextFieldStarLabel = styled.span`
   color: ${colors.sub_1};
 `;
 
-export const StyledTextFieldInput = styled.input<isTextFieldProps>`
-  width: 279px;
-  height: 39px;
-  padding: ${({ $isCertificate }) => ($isCertificate ? '13px 90px 13px 11px' : '13px 11px')};
+export const StyledTextFieldInput = styled.input<{ 
+  $isError?: boolean;
+  $height?: string;
+}>`
+  width: 100%;
+  height: ${props => props.$height};
+  padding: 12px 16px;
+  border: 0.3px solid ${props => (props.$isError ? colors.error : colors.box_border)};
   border-radius: 8px;
-  border: ${({ $isError }) => `1px solid ${$isError ? colors.sub_1 : colors.box_border}`};
-  background: ${colors.white};
-  box-sizing: border-box;
-
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
-  color: ${colors.secondary_text};
-
-  &::placeholder {
-    color: #c7c7c7;
-  }
+  font-size: 16px;
 
   &:focus {
     outline: none;
-  }
-
-  // 자동 완성 시 배경색 제거
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-    box-shadow: 0 0 0px 1000px white inset;
-    -webkit-text-fill-color: ${colors.text};
-    transition: background-color 5000s ease-in-out 0s;
+    border-color: ${props => (props.$isError ? colors.error : colors.primary)};
   }
 `;
+
+export const StyledTextFieldTextArea = styled.textarea<{ 
+  $isError?: boolean;
+  $height?: string;
+}>`
+  width: 100%;
+  height: ${props => props.$height};
+  min-height: ${props => props.$height};
+  padding: 12px 16px;
+  border: 0.3px solid ${props => (props.$isError ? colors.error : colors.box_border)};
+  border-radius: 8px;
+  font-size: 16px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+    border-color: ${props => (props.$isError ? colors.error : colors.primary)};
+  }
+`;
+
