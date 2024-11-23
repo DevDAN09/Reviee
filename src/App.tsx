@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { 
   HomePage, 
+  LoginPage,
   ErrorPage 
 } from '@/pages';
 import Frame from '@/components/Frame';
@@ -25,6 +26,10 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/login',
+        element: <LoginPage />,
       },
     ],
   },
