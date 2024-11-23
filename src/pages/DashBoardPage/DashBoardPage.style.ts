@@ -138,11 +138,13 @@ export const MarkdownWrapper = styled.div<{ isEditing: boolean }>`
   border-radius: 8px;
   padding: 20px;
   margin: 20px 0;
+  background-color: ${colors.surface};
   background-color: #ffffff;
   max-width: 80%;
   max-height: ${props => props.isEditing ? '250px' : '500px'};
   overflow-y: auto;
   overflow-x: hidden;
+  color: ${colors.text};
 
   @media screen and (max-width: 425px) {
     max-width: 300px;
@@ -175,8 +177,8 @@ export const MarkdownWrapper = styled.div<{ isEditing: boolean }>`
   }
 
   p code {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: ${colors.surface};
+    color: ${colors.text};
     padding: 0.2em 0.4em;
     border-radius: 3px;
   }
@@ -196,6 +198,19 @@ export const MarkdownWrapper = styled.div<{ isEditing: boolean }>`
 
   .hljs-comment {
     color: #5c6370;
+  }
+
+  p, h1, h2, h3, h4, h5, h6, li, td, th {
+    color: ${colors.text};
+  }
+
+  a {
+    color: ${colors.primary};
+  }
+
+  blockquote {
+    color: ${colors.text};
+    border-left-color: ${colors.primary};
   }
 `;
 

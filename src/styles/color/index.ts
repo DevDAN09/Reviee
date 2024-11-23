@@ -12,7 +12,9 @@ export type ColorKeys =
   | 'profile_text_background'
   | 'profile_text'
   | 'button_background'
-  | 'error';
+  | 'error'
+  | 'surface'
+  | 'surface2';
 
 export type Colors = Record<ColorKeys, string>;
 
@@ -31,6 +33,8 @@ const colors: Colors = {
   primary: '#12B886',
   button_background: '#000000',
   error: '#FF6868',
+  surface: '#E9ECEF',
+  surface2: '#E9ECEF',
 };
 
 export default colors;
