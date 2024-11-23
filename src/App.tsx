@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider, RouteObject, Outlet, ScrollRestoration, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Suspense } from 'react';
@@ -6,6 +5,8 @@ import {
   HomePage, 
   ErrorPage 
 } from '@/pages';
+import Frame from '@/components/Frame';
+
 
 const queryClient = new QueryClient();
 
@@ -50,7 +51,9 @@ const router = createBrowserRouter(routes);
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Frame>
+        <RouterProvider router={router} />
+      </Frame>
     </>
   );
 }
