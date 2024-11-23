@@ -11,12 +11,20 @@ export const StyledTextFieldContainer = styled.div<{ $width: string }>`
   flex-direction: column;
   gap: 8px;
   width: ${props => props.$width};
+
+  @media screen and (max-width: 425px) {
+    width: 250px;
+  }
 `;
 
 export const StyledTextFieldLabelContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 5px;
+
+  @media screen and (max-width: 425px) {
+    width: 250px;
+  }
 `;
 
 export const StyledTextFieldLabel = styled.label`
@@ -45,6 +53,11 @@ export const StyledTextFieldInput = styled.input<{
   border: 0.3px solid ${props => (props.$isError ? colors.error : colors.box_border)};
   border-radius: 8px;
   font-size: 16px;
+
+    @media screen and (max-width: 425px) {
+        font-size: 0.8rem;
+        width: 250px;
+    }
   
   &:focus {
     outline: none;

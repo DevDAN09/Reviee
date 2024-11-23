@@ -13,12 +13,20 @@ export const HeaderContainer = styled.div`
 export const ContentContainer = styled.div`
     width: inherit;
     margin-left: 2rem;
+
+    @media screen and (max-width: 425px) {
+        margin-left: 0rem;
+    }
 `
 export const Title = styled.div`
     margin-top: 10rem;
     ${getFontStyle('Header1')}
     color: ${colors.primary};
     text-align: start;
+
+    @media screen and (max-width: 320px) {
+        font-size: 2rem;
+    }
 `
 
 export const SubTitle = styled.div`
@@ -26,6 +34,10 @@ export const SubTitle = styled.div`
     ${getFontStyle('Header3')}
     color: ${colors.text};
     text-align: start;
+
+    @media screen and (max-width: 425px) {
+        font-size: 1rem;
+    }
 `
 
 export const Description = styled.div`
@@ -33,6 +45,10 @@ export const Description = styled.div`
     ${getFontStyle('Body1')}
     color: ${colors.text};
     text-align: start;
+
+    @media screen and (max-width: 425px) {
+        font-size: 1rem;
+    }
 `
 
 export const ButtonContainer = styled.div`

@@ -105,7 +105,7 @@ const HomePage = () =>{
                 } />
             </HeaderContainer>
             <ContentContainer>
-                <Title>{isVelogLinked ? '안녕하세요! ' + userName + '님' : isLogin ? '안녕하세요! ' + userName + '님' : 'Reviee에 오신 것을 환영합니다!'}</Title>
+                <Title>{isVelogLinked ? '안녕하세요! ' + userName + '님' : isLogin ? '안녕하세요!' : 'Reviee에 오신 것을 환영합니다!'}</Title>
                 <Description>
                     {isVelogLinked ? <>이제 REVIEE를 이용해보세요<br/> REVIEE가 VELOG에 정리해서 올려드릴게요</> : 
                     isLogin ? <>Velog를 연동해주세요! <br/> REVIEE가 VELOG에 정리해서 올려드릴게요</> : <>오늘 공부하신 내용을 작성하면 <br/> REVIEE가 VELOG에 정리해서 올려드릴게요</>}</Description>

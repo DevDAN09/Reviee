@@ -15,6 +15,10 @@ export const HeaderContainer = styled.div`
 export const ContentContainer = styled.div`
     width: inherit;
     margin-left: 2rem;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+    }
 `
 export const Title = styled.div`
     margin-top: 1rem;
@@ -33,6 +37,9 @@ export const Title = styled.div`
             transform: translateY(0);
         }
     }
+    @media screen and (max-width: 425px) {
+        font-size: 1.5rem;
+    }
 `
 
 export const SubTitle = styled.div`
@@ -49,6 +56,10 @@ export const SubTitle = styled.div`
         to {
             opacity: 1;
         }
+    }
+    
+    @media screen and (max-width: 425px) {
+        font-size: 1rem;
     }
 `
 

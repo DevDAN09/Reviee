@@ -24,6 +24,10 @@ export const Title = styled.div`
         from { opacity: 0; }
         to { opacity: 1; }
     }
+
+    @media screen and (max-width: 320px) {
+        font-size: 2rem;
+    }
 `
 
 export const Description = styled.div`
@@ -36,6 +40,10 @@ export const Description = styled.div`
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
+    }
+
+    @media screen and (max-width: 320px) {
+        font-size: 1rem;
     }
 `
 

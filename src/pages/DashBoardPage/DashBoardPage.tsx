@@ -182,8 +182,8 @@ const DashBoardPage = () => {
     const gptRequestMutation = useMutation({
         mutationFn: () => gptRequest(title, content, code),
         onSuccess: (data) => {
-            setIsGptRequestSent(true);
             setMarkdown(data);
+            setIsGptRequestSent(true);
         },
         onError: (error) => {
             console.error('요청 실패:', error);
@@ -194,6 +194,7 @@ const DashBoardPage = () => {
         mutationFn: () => velogPost(title, markdown),
         onSuccess: (data) => {
             window.open(data.postUrl, '_blank');
+            navigate('/');
         },
         onError: (error) => {
             console.error('요청 실패:', error);
@@ -205,10 +206,8 @@ const DashBoardPage = () => {
     }
 
     const handleRequest = () => {
-        //gptRequestMutation.mutate();
         showToast('Reviee가 내용을 정리중...');
-        
-        
+        gptRequestMutation.mutate();
     }
 
     const handleBack = () => {
@@ -224,9 +223,7 @@ const DashBoardPage = () => {
     }
 
     const showToast = (message: string) => {
-        toast.showToast({theme: "positive", content: message}, () => {
-            setIsGptRequestSent(true);
-        });
+        toast.showToast({theme: "positive", content: message});
     }
 
     const renderStep = () => {
