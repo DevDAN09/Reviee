@@ -29,6 +29,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { velogPost } from '@/api/endpoints/blog/velog-post';
 import MDEditor from '@uiw/react-md-editor';
+import { useToast } from '@/hooks/useToast';
 
 interface CodeViewProps {
     code: string;
@@ -119,7 +120,8 @@ const Step1View = ({
         </TextFieldContainer>
         <SubTitle>공부한 내용에 대해서 설명해주세요.</SubTitle>
         <TextFieldContainer>
-            <TextField 
+            <TextField
+                height="120px"
                 description="예시) SpringBoot를 사용하면서 Null 체크는 필수적인 작업이다..." 
                 value={content} 
                 onChange={(e) => setContent(e.target.value)}
@@ -137,7 +139,8 @@ const Step1View = ({
 );
 
 const Step2View = ({ code, setCode, handleRequest, isPending }: CodeViewProps) => (
-    <>
+    <>  
+        
         <StepIndicator currentStep={2} />
         <Title>코드 입력</Title>
         <SubTitle>추가로 작성한 코드가 있다면 작성해주세요</SubTitle>
@@ -174,6 +177,7 @@ const DashBoardPage = () => {
     const [isGptRequestSent, setIsGptRequestSent] = useState(false);
     const [markdown, setMarkdown] = useState('');
     const navigate = useNavigate();
+    const toast = useToast();
 
     const gptRequestMutation = useMutation({
         mutationFn: () => gptRequest(title, content, code),
@@ -202,7 +206,9 @@ const DashBoardPage = () => {
 
     const handleRequest = () => {
         //gptRequestMutation.mutate();
-        setIsGptRequestSent(true);
+        showToast('Reviee가 내용을 정리중...');
+        
+        
     }
 
     const handleBack = () => {
@@ -212,7 +218,15 @@ const DashBoardPage = () => {
     }
 
     const handleVelogPost = () => {
+        showToast('Velog 글 작성중...');
         velogPostMutation.mutate();
+        
+    }
+
+    const showToast = (message: string) => {
+        toast.showToast({theme: "positive", content: message}, () => {
+            setIsGptRequestSent(true);
+        });
     }
 
     const renderStep = () => {
@@ -242,7 +256,8 @@ const DashBoardPage = () => {
     };
 
     return (
-        <VelogPageStyle>
+        <>
+            <VelogPageStyle>
             <HeaderContainer>
                 <Header/>
             </HeaderContainer>
@@ -250,7 +265,8 @@ const DashBoardPage = () => {
             <ContentContainer>
                 {renderStep()}
             </ContentContainer>
-        </VelogPageStyle>
+            </VelogPageStyle>
+        </>
     );
 }
 

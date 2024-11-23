@@ -6,7 +6,6 @@ import {
   StyledTextFieldLabel,
   StyledTextFieldLabelContainer,
   StyledTextFieldStarLabel,
-  StyledTextFieldTextArea,
 } from './TextField.style';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

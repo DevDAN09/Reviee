@@ -20,7 +20,6 @@ export const StyledTextFieldLabelContainer = styled.div`
 `;
 
 export const StyledTextFieldLabel = styled.label`
-  padding-left: 5px;
   ${getFontStyle('Caption3')};
   font-weight: 700;
   color: ${colors.secondary_text};
@@ -29,7 +28,7 @@ export const StyledTextFieldLabel = styled.label`
 export const StyledTextFieldHelperText = styled.span<isTextFieldProps>`
   ${getFontStyle('Caption3')};
   font-weight: 700;
-  color: ${({ $isError }) => ($isError ? `${colors.sub_1}` : `${colors.secondary_text}`)};
+  color: ${({ $isError }) => ($isError ? colors.sub_1 : colors.secondary_text)};
 `;
 
 export const StyledTextFieldStarLabel = styled.span`
@@ -46,12 +45,12 @@ export const StyledTextFieldInput = styled.input<{
   border: 0.3px solid ${props => (props.$isError ? colors.error : colors.box_border)};
   border-radius: 8px;
   font-size: 16px;
-
+  
   &:focus {
     outline: none;
     border-color: ${props => (props.$isError ? colors.error : colors.primary)};
-  }
-`;
+    }`
+;
 
 export const StyledTextFieldTextArea = styled.textarea<{ 
   $isError?: boolean;
@@ -69,6 +68,5 @@ export const StyledTextFieldTextArea = styled.textarea<{
   &:focus {
     outline: none;
     border-color: ${props => (props.$isError ? colors.error : colors.primary)};
-  }
-`;
-
+  }`
+  ;

@@ -9,7 +9,7 @@ import {
   DashBoardPage
 } from '@/pages';
 import Frame from '@/components/Frame';
-
+import ToastProvider from '@/components/ToastProvider';
 
 const queryClient = new QueryClient();
 
@@ -53,7 +53,10 @@ const routes: RouteObject[] = [
   {
     element:(
       <QueryClientProvider client={queryClient}>
+        <ToastProvider/>
+          <Frame>
             <Outlet />
+          </Frame>
       </QueryClientProvider>
     ),
     errorElement: <Navigate to="/error" replace/>,
@@ -66,9 +69,7 @@ const router = createBrowserRouter(routes);
 function App() {
   return (
     <>
-      <Frame>
-        <RouterProvider router={router} />
-      </Frame>
+      <RouterProvider router={router} />
     </>
   );
 }

@@ -105,7 +105,7 @@ const VelogPage = () =>{
 
     const sendEmailMutation = useMutation({
         mutationFn: () => sendVelogAuthEmail(email),
-        onSuccess: (data) => {
+        onSuccess: () => {
             // console.log('로그인 성공:', data);
             setIsEmailReceived(true);
         },
@@ -116,7 +116,7 @@ const VelogPage = () =>{
 
     const authLinkMutation = useMutation({
         mutationFn: () => sendVelogAuthLink(authLink),
-        onSuccess: (data) => {
+        onSuccess: () => {
             //console.log('로그인 성공:', data);
             setIsAuthLinkSent(true);
         },
