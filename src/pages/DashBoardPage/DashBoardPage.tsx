@@ -207,8 +207,8 @@ const DashBoardPage = () => {
 
     const handleRequest = () => {
         showToast('Reviee가 내용을 정리중...');
-        //gptRequestMutation.mutate();
-        setIsGptRequestSent(true);
+        gptRequestMutation.mutate();
+        //setIsGptRequestSent(true);
     }
 
     const handleVelogPost = () => {
