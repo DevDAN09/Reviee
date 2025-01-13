@@ -15,7 +15,7 @@ import {
     EditorContainer,
     StepDescription,
 } from "./DashBoardPage.style"
-import { useState } from 'react';
+import { useState, lazy, Suspense, useCallback, memo } from 'react';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import TextField  from '@/components/TextField';
@@ -28,7 +28,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { velogPost } from '@/api/endpoints/blog/velog-post';
-import MDEditor from '@uiw/react-md-editor';
 import { useToast } from '@/hooks/useToast';
 
 interface CodeViewProps {
@@ -49,8 +48,9 @@ interface StepIndicatorProps {
 }
 
 
+const MDEditor = lazy(() => import('@uiw/react-md-editor'));
 
-const SuccessView = ({ markdown, handleVelogPost, setMarkdown }: SuccessViewProps) => {
+const SuccessView = memo(({ markdown, handleVelogPost, setMarkdown }: SuccessViewProps) => {
     const [isEditing, setIsEditing] = useState(false);
 
     return (
@@ -75,12 +75,14 @@ const SuccessView = ({ markdown, handleVelogPost, setMarkdown }: SuccessViewProp
             </FloatingToggleButton>
             <EditorContainer>
                 {isEditing && (
-                <MDEditor
-                    value={markdown}
+                <Suspense fallback={<div>에디터 로딩중...</div>}>
+                    <MDEditor
+                        value={markdown}
                         onChange={(value) => setMarkdown(value || '')}
                         preview="edit"
                         height={500}
-                />
+                    />
+                </Suspense>
             )}
             </EditorContainer>
             <ButtonContainer>
@@ -92,7 +94,7 @@ const SuccessView = ({ markdown, handleVelogPost, setMarkdown }: SuccessViewProp
             </ButtonContainer>
         </>
     );
-};
+});
 
 const Step1View = ({ 
     title, 
@@ -201,15 +203,14 @@ const DashBoardPage = () => {
         }
     });
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         setCurrentStep(prev => prev + 1);
-    }
+    }, []);
 
-    const handleRequest = () => {
+    const handleRequest = useCallback(() => {
         showToast('Reviee가 내용을 정리중...');
         gptRequestMutation.mutate();
-        //setIsGptRequestSent(true);
-    }
+    }, [gptRequestMutation]);
 
     const handleVelogPost = () => {
         showToast('Velog 글 작성중...');

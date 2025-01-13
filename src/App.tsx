@@ -1,17 +1,24 @@
 import { createBrowserRouter, RouterProvider, RouteObject, Outlet, ScrollRestoration, Navigate } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Suspense } from 'react';
-import { 
-  HomePage, 
-  LoginPage,
-  ErrorPage,
-  VelogPage,
-  DashBoardPage
-} from '@/pages';
 import Frame from '@/components/Frame';
 import ToastProvider from '@/components/ToastProvider';
 
 const queryClient = new QueryClient();
+
+// 지연 로딩을 위한 페이지 컴포넌트 분리
+const HomePage = lazy(() => import('@/pages/HomePage/HomePage' /* webpackChunkName: "home" */));
+const LoginPage = lazy(() => import('@/pages/LoginPage/LoginPage' /* webpackChunkName: "login" */));
+const VelogPage = lazy(() => import('@/pages/VelogPage/VelogPage' /* webpackChunkName: "velog" */));
+const DashBoardPage = lazy(() => import('@/pages/DashBoardPage/DashBoardPage' /* webpackChunkName: "dashboard" */));
+const ErrorPage = lazy(() => import('@/pages/ErrorPage/ErrorPage'));
+
+// 로딩 컴포넌트
+const LoadingSpinner = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    로딩중...
+  </div>
+);
 
 const publicRoutes: RouteObject[] = [
   {
@@ -19,7 +26,7 @@ const publicRoutes: RouteObject[] = [
     element: (
       <>
         <ScrollRestoration />
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Outlet />
         </Suspense>
       </>
