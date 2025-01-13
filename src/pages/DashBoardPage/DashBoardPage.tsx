@@ -15,7 +15,7 @@ import {
     EditorContainer,
     StepDescription,
 } from "./DashBoardPage.style"
-import { useState, lazy, Suspense, useCallback, memo } from 'react';
+import { useState, lazy, Suspense, useCallback,memo } from 'react';
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 import TextField  from '@/components/TextField';
@@ -46,8 +46,6 @@ interface SuccessViewProps {
 interface StepIndicatorProps {
     currentStep: number;
 }
-
-
 const MDEditor = lazy(() => import('@uiw/react-md-editor'));
 
 const SuccessView = memo(({ markdown, handleVelogPost, setMarkdown }: SuccessViewProps) => {
